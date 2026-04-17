@@ -5,6 +5,7 @@
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)](https://tensorflow.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue.svg)](https://www.linkedin.com/in/ivan-santos-8046a8355/)
 
 ---
 
@@ -45,3 +46,36 @@ Em industrias, **paradas nao planejadas custam milhoes**. O desafio e identifica
 ---
 
 ## Arquitetura do Modelo
+
+| Camada | Detalhes |
+|:-------|:---------|
+| Entrada | 12 features |
+| Camada Dense 1 | 32 neuronios, ReLU, L2 |
+| Dropout 1 | 50% |
+| Camada Dense 2 | 16 neuronios, ReLU, L2 |
+| Dropout 2 | 50% |
+| Saida | Sigmoid (probabilidade de falha) |
+
+**Por que esta arquitetura?**
+- **Regularizacao L2** → Evita overfitting (dados de treino vs. dados reais)
+- **Dropout 50%** → Forca o modelo a aprender padroes robustos
+- **Sigmoid na saida** → Probabilidade entre 0 e 1, ideal para decisoes de negocio
+
+---
+
+## Tecnicas Aplicadas
+
+- Tratamento de **dados desbalanceados** (classe de falha recebe peso 14.76x maior)
+- **Early Stopping** para evitar overfitting e economizar tempo de treino
+- **Otimizacao de threshold** baseada no custo de negocio (priorizar recall sobre precisao)
+- Normalizacao com StandardScaler
+- Visualizacoes profissionais
+
+---
+
+## Como Executar
+
+### Pre-requisitos
+
+```bash
+pip install -r requirements.txt
